@@ -1,10 +1,17 @@
+import { ComponentPropsWithoutRef } from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
-type ButtonProps = {
+interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   children: React.ReactNode;
-  variant?: 'destructive' | 'secondary' | 'outline';
-  size: 'default'|'sm' | 'icon' | 'lg';
+  variant?:
+    | 'destructive'
+    | 'secondary'
+    | 'outline'
+    | 'ghost'
+    | 'link'
+    | 'default';
+  size: 'default' | 'sm' | 'icon' | 'lg';
 };
 
 export default function Button({
@@ -32,13 +39,15 @@ export default function Button({
     icon: 'h-10 w-10',
   };
   const defaultVariants = {
-      variant: "default",
-      size: "default",
-    };
+    variant: 'default',
+    size: 'default',
+  };
 
   return (
     <button
-      className={twMerge(clsx(baseStyle, variants[variant], sizes[size], defaultVariants))}
+      className={twMerge(
+        clsx(baseStyle, variants[variant], sizes[size], defaultVariants),
+      )}
     >
       {children}
     </button>
