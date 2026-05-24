@@ -1,99 +1,133 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import Link from "next/link";
-import { Activity, Sparkles, Calendar, BarChart3, Check, ArrowRight } from "lucide-react";
-import Button from "@/components/ui/button";
-import { PRICING, formatINR } from '@/lib/tiers'
-import { cn } from "@/lib/util";
+import { useEffect } from 'react';
+import Link from 'next/link';
+import {
+  Activity,
+  Sparkles,
+  Calendar,
+  BarChart3,
+  Check,
+  ArrowRight,
+} from 'lucide-react';
+import Button from '@/components/ui/button';
+import { PRICING, formatINR } from '@/lib/tiers';
+import { cn } from '@/lib/util';
 
 export default function Home() {
   useEffect(() => {
     // Note: In Next.js, it's best to handle this via layout.tsx or a separate server page file,
     // but keeping it here ensures your original logic works seamlessly on the client side.
-    document.title = "Roadmapr — AI-powered learning roadmap coach";
+    document.title = 'Roadmapr — AI-powered learning roadmap coach';
     const meta = document.querySelector('meta[name="description"]');
-    const desc = "Generate structured day-by-day learning plans for any skill with AI. Track progress, build streaks, and stay on schedule.";
-    if (meta) meta.setAttribute("content", desc);
+    const desc =
+      'Generate structured day-by-day learning plans for any skill with AI. Track progress, build streaks, and stay on schedule.';
+    if (meta) meta.setAttribute('content', desc);
     else {
-      const m = document.createElement("meta");
-      m.name = "description";
+      const m = document.createElement('meta');
+      m.name = 'description';
       m.content = desc;
       document.head.appendChild(m);
     }
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className='min-h-screen bg-background text-foreground'>
       {/* Nav */}
-      <header className="sticky top-0 z-30 border-b bg-background/80 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="grid h-8 w-8 place-items-center rounded-lg gradient-primary shadow-elegant">
-              <Activity className="h-4 w-4 text-primary-foreground" />
+      <header className='sticky top-0 z-30 border-b bg-background/80 backdrop-blur'>
+        <div className='mx-auto flex h-16 max-w-6xl items-center justify-between px-4'>
+          <Link href='/' className='flex items-center gap-2'>
+            <div className='grid h-8 w-8 place-items-center rounded-lg gradient-primary shadow-elegant'>
+              <Activity className='h-4 w-4 text-primary-foreground' />
             </div>
-            <span className="font-semibold">Roadmapr</span>
+            <span className='font-semibold'>Roadmapr</span>
           </Link>
-          <nav className="hidden items-center gap-6 text-sm text-muted-foreground sm:flex">
-            <a href="#features" className="hover:text-foreground">Features</a>
-            <a href="#pricing" className="hover:text-foreground">Pricing</a>
-            <Link href="/auth" className="hover:text-foreground">Sign in</Link>
+          <nav className='hidden items-center gap-6 text-sm text-muted-foreground sm:flex'>
+            <a href='#features' className='hover:text-foreground'>
+              Features
+            </a>
+            <a href='#pricing' className='hover:text-foreground'>
+              Pricing
+            </a>
+            <Link href='/auth' className='hover:text-foreground'>
+              Sign in
+            </Link>
           </nav>
-          <Button asChild size="sm">
-            <Link href="/auth">Start free</Link>
+          <Button size='sm'>
+            <Link href='/auth'>Start free</Link>
           </Button>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_0%,hsl(var(--primary)/0.15),transparent)]" />
-        <div className="mx-auto max-w-4xl px-4 py-20 text-center sm:py-28">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border bg-card/60 px-3 py-1 text-xs text-muted-foreground">
-            <Sparkles className="h-3 w-3 text-primary" />
+      <section className='relative overflow-hidden'>
+        <div className='pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_0%,hsl(var(--primary)/0.15),transparent)]' />
+        <div className='mx-auto max-w-4xl px-4 py-20 text-center sm:py-28'>
+          <div className='mb-4 inline-flex items-center gap-2 rounded-full border bg-card/60 px-3 py-1 text-xs text-muted-foreground'>
+            <Sparkles className='h-3 w-3 text-primary' />
             AI-powered learning coach
           </div>
-          <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
-            Your personal{" "}
-            <span className="bg-gradient-to-r from-primary to-[hsl(var(--primary-glow))] bg-clip-text text-transparent">
+          <h1 className='text-balance text-4xl font-semibold leading-tight tracking-tight sm:text-6xl'>
+            Your personal{' '}
+            <span className='bg-gradient-to-r from-primary to-[hsl(var(--primary-glow))] bg-clip-text text-transparent'>
               learning roadmap
             </span>
             , generated by AI.
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-balance text-base text-muted-foreground sm:text-lg">
-            Tell Roadmapr what you want to learn — System Design, Davinci Resolve, anything. Get a
-            day-by-day plan, track your progress, and finish what you started.
+          <p className='mx-auto mt-5 max-w-2xl text-balance text-base text-muted-foreground sm:text-lg'>
+            Tell Roadmapr what you want to learn — System Design, Davinci
+            Resolve, anything. Get a day-by-day plan, track your progress, and
+            finish what you started.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg" className="gap-2">
-              <Link href="/auth">
-                Start free <ArrowRight className="h-4 w-4" />
+          <div className='mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row'>
+            <Button size='lg' className='gap-2'>
+              <Link href='/auth'>
+                Start free <ArrowRight className='h-4 w-4' />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href="#pricing">See pricing</a>
+            <Button variant='outline' size='lg'>
+              <a href='#pricing'>See pricing</a>
             </Button>
           </div>
-          <p className="mt-3 text-xs text-muted-foreground">No credit card required · 1 free AI plan / month</p>
+          <p className='mt-3 text-xs text-muted-foreground'>
+            No credit card required · 1 free AI plan / month
+          </p>
         </div>
       </section>
 
       {/* Features */}
-      <section id="features" className="border-t bg-card/30">
-        <div className="mx-auto max-w-6xl px-4 py-20">
-          <h2 className="text-center text-3xl font-semibold">Everything you need to learn faster</h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+      <section id='features' className='border-t bg-card/30'>
+        <div className='mx-auto max-w-6xl px-4 py-20'>
+          <h2 className='text-center text-3xl font-semibold'>
+            Everything you need to learn faster
+          </h2>
+          <div className='mt-12 grid gap-6 sm:grid-cols-3'>
             {[
-              { icon: Sparkles, title: "AI roadmap generator", body: "Enter a topic and duration. Get a realistic, progressive day-by-day curriculum in seconds." },
-              { icon: Calendar, title: "Day-by-day tracking", body: "Tick off subtasks as you finish them. Edit, add, and reorder freely." },
-              { icon: BarChart3, title: "Progress analytics", body: "See your pace vs schedule, completion trends, and habit streaks." },
+              {
+                icon: Sparkles,
+                title: 'AI roadmap generator',
+                body: 'Enter a topic and duration. Get a realistic, progressive day-by-day curriculum in seconds.',
+              },
+              {
+                icon: Calendar,
+                title: 'Day-by-day tracking',
+                body: 'Tick off subtasks as you finish them. Edit, add, and reorder freely.',
+              },
+              {
+                icon: BarChart3,
+                title: 'Progress analytics',
+                body: 'See your pace vs schedule, completion trends, and habit streaks.',
+              },
             ].map((f) => (
-              <div key={f.title} className="rounded-xl border bg-card p-6 shadow-card">
-                <div className="grid h-10 w-10 place-items-center rounded-lg gradient-primary">
-                  <f.icon className="h-5 w-5 text-primary-foreground" />
+              <div
+                key={f.title}
+                className='rounded-xl border bg-card p-6 shadow-card'
+              >
+                <div className='grid h-10 w-10 place-items-center rounded-lg gradient-primary'>
+                  <f.icon className='h-5 w-5 text-primary-foreground' />
                 </div>
-                <h3 className="mt-4 font-semibold">{f.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{f.body}</p>
+                <h3 className='mt-4 font-semibold'>{f.title}</h3>
+                <p className='mt-1 text-sm text-muted-foreground'>{f.body}</p>
               </div>
             ))}
           </div>
@@ -101,39 +135,53 @@ export default function Home() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="border-t">
-        <div className="mx-auto max-w-6xl px-4 py-20">
-          <div className="text-center">
-            <h2 className="text-3xl font-semibold">Simple, honest pricing</h2>
-            <p className="mt-2 text-muted-foreground">Start free. Upgrade when you're ready.</p>
+      <section id='pricing' className='border-t'>
+        <div className='mx-auto max-w-6xl px-4 py-20'>
+          <div className='text-center'>
+            <h2 className='text-3xl font-semibold'>Simple, honest pricing</h2>
+            <p className='mt-2 text-muted-foreground'>
+              Start free. Upgrade when you&apos;re ready.
+            </p>
           </div>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className='mt-12 grid gap-6 lg:grid-cols-3'>
             {PRICING.map((p) => (
               <div
                 key={p.id}
                 className={cn(
-                  "relative rounded-2xl border bg-card p-6 shadow-card transition",
-                  p.highlight && "border-primary shadow-elegant",
+                  'relative rounded-2xl border bg-card p-6 shadow-card transition',
+                  p.highlight && 'border-primary shadow-elegant',
                 )}
               >
                 {p.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full gradient-primary px-3 py-1 text-xs font-medium text-primary-foreground">
+                  <div className='absolute -top-3 left-1/2 -translate-x-1/2 rounded-full gradient-primary px-3 py-1 text-xs font-medium text-primary-foreground'>
                     Most popular
                   </div>
                 )}
-                <h3 className="text-lg font-semibold">{p.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold">{p.price === 0 ? "Free" : formatINR(p.price)}</span>
-                  {p.price > 0 && <span className="text-sm text-muted-foreground">/month</span>}
+                <h3 className='text-lg font-semibold'>{p.name}</h3>
+                <p className='mt-1 text-sm text-muted-foreground'>
+                  {p.tagline}
+                </p>
+                <div className='mt-4 flex items-baseline gap-1'>
+                  <span className='text-4xl font-bold'>
+                    {p.price === 0 ? 'Free' : formatINR(p.price)}
+                  </span>
+                  {p.price > 0 && (
+                    <span className='text-sm text-muted-foreground'>
+                      /month
+                    </span>
+                  )}
                 </div>
-                <Button asChild className="mt-6 w-full" variant={p.highlight ? "default" : "outline"}>
-                  <Link href="/auth">{p.cta}</Link>
+                <Button
+                  className='mt-6 w-full'
+                  variant={p.highlight ? 'default' : 'outline'}
+                  size='lg'
+                >
+                  <Link href='/auth'>{p.cta}</Link>
                 </Button>
-                <ul className="mt-6 space-y-2 text-sm">
+                <ul className='mt-6 space-y-2 text-sm'>
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <li key={f} className='flex items-start gap-2'>
+                      <Check className='mt-0.5 h-4 w-4 shrink-0 text-primary' />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -145,22 +193,32 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="border-t">
-        <div className="mx-auto max-w-3xl px-4 py-20 text-center">
-          <h2 className="text-3xl font-semibold">Stop drifting. Start a roadmap today.</h2>
-          <p className="mt-3 text-muted-foreground">Pick a skill, let AI plan it, learn one day at a time.</p>
-          <Button asChild size="lg" className="mt-6 gap-2">
-            <Link href="/auth">Start free <ArrowRight className="h-4 w-4" /></Link>
+      <section className='border-t'>
+        <div className='mx-auto max-w-3xl px-4 py-20 text-center'>
+          <h2 className='text-3xl font-semibold'>
+            Stop drifting. Start a roadmap today.
+          </h2>
+          <p className='mt-3 text-muted-foreground'>
+            Pick a skill, let AI plan it, learn one day at a time.
+          </p>
+          <Button asChild size='lg' className='mt-6 gap-2'>
+            <Link href='/auth'>
+              Start free <ArrowRight className='h-4 w-4' />
+            </Link>
           </Button>
         </div>
       </section>
 
-      <footer className="border-t">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-8 text-sm text-muted-foreground sm:flex-row">
+      <footer className='border-t'>
+        <div className='mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-8 text-sm text-muted-foreground sm:flex-row'>
           <span>© {new Date().getFullYear()} Roadmapr</span>
-          <div className="flex gap-4">
-            <Link href="/pricing" className="hover:text-foreground">Pricing</Link>
-            <Link href="/auth" className="hover:text-foreground">Sign in</Link>
+          <div className='flex gap-4'>
+            <Link href='/pricing' className='hover:text-foreground'>
+              Pricing
+            </Link>
+            <Link href='/auth' className='hover:text-foreground'>
+              Sign in
+            </Link>
           </div>
         </div>
       </footer>

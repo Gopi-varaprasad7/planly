@@ -122,7 +122,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
                 <h1 className='text-base font-semibold leading-tight'>
                   Planly
                 </h1>
-                <p className='text-xs text-muted-foreground'>{todayLabel()}</p>
+                {/* <p className='text-xs text-muted-foreground'>{todayLabel()}</p> */}
               </div>
             </div>
             <div className='flex items-center gap-1'>
